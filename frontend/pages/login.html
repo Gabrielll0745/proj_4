@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Gestor Financas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-card">
+      <h1>Gestor Financas</h1>
+      <p class="muted">Acesse sua conta para acompanhar receitas, despesas e orcamentos.</p>
+
+      <div id="mensagem" class="message"></div>
+
+      <form id="loginForm" class="form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" required>
+        </div>
+
+        <button class="button" type="submit">Entrar</button>
+      </form>
+
+      <p class="muted">
+        Ainda nao tem conta?
+        <a class="brand" href="cadastro.html">Criar cadastro</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

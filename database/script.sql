@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS gestor_financas
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE gestor_financas;
+
+CREATE TABLE IF NOT EXISTS usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(120) NOT NULL,
+  email VARCHAR(160) NOT NULL UNIQUE,
+  senha VARCHAR(255) NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS transacoes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  tipo ENUM('receita', 'despesa') NOT NULL,
+  categoria VARCHAR(100) NOT NULL,
+  descricao VARCHAR(255),
+  valor DECIMAL(12, 2) NOT NULL,
+  data DATE NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_transacoes_usuario
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS orcamentos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario_id INT NOT NULL,
+  categoria VARCHAR(100) NOT NULL,
+  valor_limite DECIMAL(12, 2) NOT NULL,
+  mes TINYINT NOT NULL,
+  ano SMALLINT NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_orcamentos_usuario
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    ON DELETE CASCADE,
+  CONSTRAINT chk_orcamentos_mes CHECK (mes BETWEEN 1 AND 12)
+);
