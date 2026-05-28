@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Transacao | Gestor Financas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <nav class="nav">
+      <a class="brand" href="home.html">Gestor Financas</a>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="transacoes.html">Transacoes</a>
+        <a href="cadastro-transacao.html">Nova transacao</a>
+        <a href="orcamentos.html">Orcamentos</a>
+        <a href="relatorios.html">Relatorios</a>
+        <button class="link-button" type="button" onclick="logout()">Sair</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Nova transacao</h1>
+        <p class="muted">Cadastre uma receita ou despesa.</p>
+      </div>
+    </div>
+
+    <section class="panel">
+      <div id="mensagem" class="message"></div>
+      <form id="formTransacao" class="form">
+        <div class="form-group">
+          <label for="tipo">Tipo</label>
+          <select id="tipo" required>
+            <option value="receita">Receita</option>
+            <option value="despesa">Despesa</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="categoria">Categoria</label>
+          <input id="categoria" type="text" required>
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descricao</label>
+          <input id="descricao" type="text">
+        </div>
+
+        <div class="form-group">
+          <label for="valor">Valor</label>
+          <input id="valor" type="number" min="0.01" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+          <label for="data">Data</label>
+          <input id="data" type="date" required>
+        </div>
+
+        <button class="button" type="submit">Salvar</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/transacoes.js"></script>
+</body>
+</html>

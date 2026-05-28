@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orcamentos | Gestor Financas</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <nav class="nav">
+      <a class="brand" href="home.html">Gestor Financas</a>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="transacoes.html">Transacoes</a>
+        <a href="cadastro-transacao.html">Nova transacao</a>
+        <a href="orcamentos.html">Orcamentos</a>
+        <a href="relatorios.html">Relatorios</a>
+        <button class="link-button" type="button" onclick="logout()">Sair</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-title">
+      <div>
+        <h1>Orcamentos</h1>
+        <p class="muted">Defina limites por categoria e periodo.</p>
+      </div>
+    </div>
+
+    <section class="grid">
+      <div class="panel">
+        <div id="mensagem" class="message"></div>
+        <form id="formOrcamento" class="form">
+          <div class="form-group">
+            <label for="categoria">Categoria</label>
+            <input id="categoria" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="valorLimite">Valor limite</label>
+            <input id="valorLimite" type="number" min="0.01" step="0.01" required>
+          </div>
+
+          <div class="form-group">
+            <label for="mes">Mes</label>
+            <input id="mes" type="number" min="1" max="12" required>
+          </div>
+
+          <div class="form-group">
+            <label for="ano">Ano</label>
+            <input id="ano" type="number" min="2020" max="2100" required>
+          </div>
+
+          <button class="button" type="submit">Salvar orcamento</button>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Limite</th>
+                <th>Periodo</th>
+                <th>Acoes</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaOrcamentos"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/orcamentos.js"></script>
+</body>
+</html>
